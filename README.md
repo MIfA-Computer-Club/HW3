@@ -12,3 +12,5 @@ Each module has been geared toward a different skill-level.  Coding elements inc
 
 ------
 To begin, you and your group should clone the repository.  Then, over the course of the next hour, develop your module.  At the end, push the repository back to github, and we will try out all the modules together.
+
+Please do not work on this ahead of time.  This needs to be a 'live' assignment for us to practice in-class workshops.  If all goes well, we can attempt this model on future projects.
