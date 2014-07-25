@@ -19,6 +19,9 @@ Please do not work on this ahead of time.  This needs to be a 'live' assignment 
 The modules have been organized by difficulty.  Please team up with a group of comparable python/coding experience.
 
 ```utils/altaz_mod.py   ***```
+
 ```utils/coord_mod.py   ***```
+
 ```utils/angle_mod.py   **```
+
 ```utils/time_mod.py    *```
