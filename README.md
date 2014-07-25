@@ -23,5 +23,5 @@ File | Difficulty
 utils/query_mod.py | ```****```
 utils/altaz_mod.py | ```***```
 utils/coord_mod.py | ``` ***```
-utils/angle_mod.py |  ``` **```
-utils/time_mod.py  |  ```*```
+utils/angle_mod.py |  ```**```
+utils/time_mod.py  |  ```**```
