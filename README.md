@@ -21,11 +21,7 @@ The modules have been organized by difficulty.  Please team up with a group of c
 File | Difficulty
 ----- | -----
 ```utils/query_mod.py``` | ```****```
-
 ```utils/altaz_mod.py``` | ```***```
-
 ```utils/coord_mod.py``` | ``` ***```
-
 ```utils/angle_mod.py``` |  ``` **```
-
 ```utils/time_mod.py```  |  ```*```
