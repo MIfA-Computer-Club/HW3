@@ -4,7 +4,7 @@
 def sex_to_deg(RA, DEC):
     '''
     INPUT
-    RA = string of form: 'hh:mm:ss.ss'
+    RA  = string of form: 'hh:mm:ss.ss'
     DEC = string of form: '[+/-]dd:mm:ss.ss'
 
     OUTPUT
