@@ -16,7 +16,7 @@ To begin, you and your group should clone the repository.  Then, over the course
 Please do not work on this ahead of time.  This needs to be a 'live' assignment for us to practice in-class workshops.  If all goes well, we can attempt this model on future projects.
 
 ------
-The modules have been organized by difficulty.  Please team up with a group of comparable python/coding experience.
+The modules have been organized by difficulty.  Please team up with a group of comparable python/coding experience.  Utilize whatever packages/online resources you can find.
 
 File | Difficulty
 ----- | -----
