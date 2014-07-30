@@ -10,25 +10,43 @@
 from utils import *
 import argparse
 import matplotlib.pyplot as plt
+from datetime import date
 
 def main():
     # Parse command line arguments
-    parser = argparse.ArgumentParser(description='Staralt clone.  Given a date, time, location, and RA/DEC, display elevation over the course of a night.')
-    parser.add_argument('RA',type=str,
+    parser = argparse.ArgumentParser(description='Staralt clone.  Given a date, location, and object (or RA/DEC), display elevation over the course of a night.')
+    parser.add_argument('name',nargs='?',type=str,
+                        help="Name of object",
+                        default=None)
+    parser.add_argument('-RA',type=str,
                         help="RA of object 'hh:mm:ss.ss'")
-    parser.add_argument('DEC',type=str,
+    parser.add_argument('-DEC',type=str,
                         help="DEC of object '[+/-]dd:mm:ss.ss")
-    parser.add_argument('date',type=str,
-                        help="date of observation 'mm/dd/yyyy'")
+    parser.add_argument('-date',type=str,
+                        help="Date of observation 'mm/dd/yyyy'. Default=today",
+                        default=date.today().strftime('%m/%d/%Y'))
     parser.add_argument('-LAT',metavar='latitude',type=str,
                         help="LAT of observatory '[+/-]dd:mm:ss.ss'",
                         default='44:58:30.93')
     parser.add_argument('-LONG',type=str,metavar='longitude',
                         help="LONG of observatory '[+/-]dd:mm:ss.ss'",
                         default='-93:14:04.26')
-    
+
+    # Parse arguments
     args = parser.parse_args()
 
+    # If name, query coordinates
+    if args.name:
+        RA, DEC = query(args.name)
+        
+    elif (args.RA and args.DEC):
+        RA, DEC = args.RA, args.DEC
+
+    else:
+        raise NameError('Must specify object name or coordinates')
+
+    # GO!
+        
     # Generate list of times, 8pm to 8am
     times = ['%i:00:00' % i for i in range(20,24)]
     times += ['0%i:00:00' % i for i in range(0,9)]
@@ -45,7 +63,7 @@ def main():
     lat_d, long_d =  latlong_to_deg(args.LAT, args.LONG)
 
     # Convert RA, DEC to degree format
-    ra_d, dec_d = sex_to_deg(args.RA, args.DEC)
+    ra_d, dec_d = sex_to_deg(RA, DEC)
 
     # Calculate LST at each UTC time
     LSTs = [LST(jd, long_d, utc) for jd,utc in zip(JDs, UTCs)]
