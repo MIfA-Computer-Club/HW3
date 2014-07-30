@@ -6,7 +6,7 @@ Assignment 3, In Class
 
 ### Staralt Clone
 
-For this in-class assignment, you will each be responsible for developing small modules that we will tie together.  The goal is to recreate a version of [Staralt](http://catserver.ing.iac.es/staralt), a web app that displays the altitude of a given object as a function of time during the night.  Staralt is a very useful tool that helps observers plan out exposures during the night.
+For this in-class assignment, you will each be responsible for developing small modules that we will tie together.  The goal is to recreate a version of [Staralt](http://catserver.ing.iac.es/staralt), a web app that displays the altitude of a given object as a function of time.  Staralt is a very useful tool that helps observers plan out exposures during the night.
 
 Each module has been geared toward a different skill-level.  Coding elements include: learning to read an API, understanding modules as a 'contract', string parsing, trigonometry, unit conversion, and more.  Additionally, you and your teammates will practice 'pair programming'--a rewarding, yet often frustrating, experience.
 
