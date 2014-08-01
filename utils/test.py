@@ -4,13 +4,25 @@ import sys
 sys.path.append("..")
 from utils import *
 import numpy as np
-from astropy.coordinates import SkyCoord
-import astropy.units as u
 
+'''Requires astropy_v0.4 for SkyCoord'''
+try:
+    from astropy.coordinates import SkyCoord
+    import astropy.units as u
+except:
+    flagAstropy = True
+else:
+    flagAstropy = False
+    
 def test_coord(filename,method,in_args,ans,tolerance):
+    '''Test against coordinate tolerance'''
     mname = method.__name__
     out_args = method(*in_args)
 
+    if flagAstropy:
+        print "   '%s:%s':  test requires astropy_v0.4" % (filename,mname)
+        return
+    
     if out_args is None:
         print "   '%s:%s': not implemented" % (filename,mname)
         return
@@ -26,6 +38,7 @@ def test_coord(filename,method,in_args,ans,tolerance):
     return
 
 def test_method(filename,method,in_args,ans,tolerance):
+    '''Test against input tolerance'''
     mname = method.__name__
     out_args = method(*in_args)
 
@@ -59,6 +72,7 @@ def main():
 
         print '\nTesting %s' % filename
 
+        '''For each method, specify correct answer and tolerance'''
         if filename == 'coord_mod.py':
             test_method(filename,sex_to_deg,
                         ("00:42:44.33","41:16:07.50"),
@@ -100,6 +114,8 @@ def main():
                         ('08/01/2014',17.5),
                         5326.229170000181,
                         2.0)
+        else:
+            print '%s: file not testable' % filename
 
 
 if __name__ == '__main__':
