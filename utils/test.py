@@ -27,6 +27,10 @@ def test_coord(filename,method,in_args,ans,tolerance):
         print "   '%s:%s': not implemented" % (filename,mname)
         return
 
+    if len(out_args[0].split(':')) != 3:
+        print "   '%s:%s': answer not properly formatted" % (filename,mname)
+        return
+    
     out_args = SkyCoord(' '.join(out_args),frame='icrs',unit=(u.hourangle,u.deg))
     ans = SkyCoord(' '.join(ans),frame='icrs',unit=(u.hourangle,u.deg))
     diff = out_args.separation(ans).to(u.arcsec).value
@@ -49,12 +53,20 @@ def test_method(filename,method,in_args,ans,tolerance):
         diff = np.abs(ans-out_args)
     except Exception as e:
         print "   '%s:%s': %s" % (filename,mname,e)
+        print "     For input:\t%s" % str(in_args)
+        print "     Correct answer:\t%s" % str(ans)
+        print "     You answered:\t%s" % str(out_args)
+        print
     else:
         diff = np.mean(diff)
         if diff < tolerance:
             print "   '%s:%s': successful!" % (filename,mname)
         else:
             print "   '%s:%s': answer not within tolerance" % (filename,mname)
+            print "     For input:\t%s" % str(in_args)
+            print "     Correct answer:\t%s" % str(ans)
+            print "     You answered:\t%s" % str(out_args)
+            print
 
     return
 
@@ -107,8 +119,8 @@ def main():
 
         elif filename == 'time_mod.py':
             test_method(filename,clock_to_UTC,
-                        ('12:30:00',-5),
-                        17.5,
+                        ('13:30:00',-5),
+                        18.5,
                         0.5)
             test_method(filename,JD,
                         ('08/01/2014',17.5),

@@ -11,6 +11,7 @@ from utils import *
 import argparse
 import matplotlib.pyplot as plt
 from datetime import date
+import numpy as np
 
 def main():
     # Parse command line arguments
@@ -46,7 +47,7 @@ def main():
         raise NameError('Must specify object name or coordinates')
 
     # GO!
-        
+    
     # Generate list of times, 8pm to 8am
     times = ['%i:00:00' % i for i in range(20,24)]
     times += ['0%i:00:00' % i for i in range(0,9)]
@@ -54,7 +55,7 @@ def main():
     ##          '00:00:00', '01:00:00', '02:00:00 ...]
 
     # Convert times to UTC
-    UTCs = map(clock_to_hours, times)
+    UTCs = map(clock_to_UTC, times)
 
     # Convert UTC times to JDs
     JDs = [JD(args.date, utc) for utc in UTCs]
@@ -73,13 +74,16 @@ def main():
 
     # Calculate Alt/Az for each HA
     alts, azs = zip(*[HA_AltAZ(ha, dec_d, lat_d) for ha in HAs])
-
-    # Plot altitude vs time
-    plt.plot(UTCs, alts)
-    plt.legend(' '.join([args.RA,args.DEC]))
-    plt.show()
     
-
+    # Convert UTCs for plotting
+    UTCs = np.array(UTCs) % 24
+    
+    # Plot altitude vs time
+    plt.plot(UTCs, alts,'ro', label=' '.join([RA,DEC]))
+    plt.xlabel('UTC [hours]')
+    plt.ylabel('Altitude [deg]')
+    plt.legend()
+    plt.show()
 
 
 if __name__ == '__main__':

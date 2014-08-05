@@ -7,7 +7,7 @@ def clock_to_UTC(time,UTCoffset=-5):
     time = string of form: 'hh:mm:ss'  (24-hour time, CDT)
     
     OUTPUT
-    UTC = decimal hours [float]
+    UTC = decimal hours [float], can exceed 24
     '''
     pass
 
