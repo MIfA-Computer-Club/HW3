@@ -18,7 +18,7 @@ def JD(date, UTC):
     UTC = decimal hours [float]
 
     OUTPUT
-    JD = days since J2000.0, including fraction of a day [float]
+    JD = Julian Date [J2000], including fraction of a day [float]
     '''
     pass
 ##############
