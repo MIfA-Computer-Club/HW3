@@ -11,7 +11,7 @@ For this in-class assignment, you will each be responsible for developing small 
 Each module has been geared toward a different skill-level.  Coding elements include: learning to read an API, understanding modules as a 'contract', string parsing, trigonometry, unit conversion, and more.  Additionally, you and your teammates will practice 'pair programming'--a rewarding, yet often frustrating, experience.
 
 ------
-To begin, you and your group should clone the repository.  Then, over the course of the next hour, develop your module.  Test the module by running ```python test.py [filename]``` in the ```utils``` directory.  At the end, push the repository back to github, and we will try out all the modules together.
+To begin, you and your group should clone the repository (```git clone git@github.com:MIfA-Computer-Club/HW3.git```).  Then, over the course of the next hour, develop your module.  Test the module by running ```python test.py [filename]``` in the ```utils``` directory.  At the end, push the repository back to github (```git commit -am 'I diddled with [file]'; git push```), and we will try out all the modules together.
 
 Please do not work on this ahead of time.  This needs to be a 'live' assignment for us to practice in-class workshops.  If all goes well, we can attempt this model on future projects.
 
