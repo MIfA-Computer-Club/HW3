@@ -56,6 +56,7 @@ def main():
 
     # Convert times to UTC
     UTCs = map(clock_to_UTC, times)
+    ###UTCs = [clock_to_UTC(time) for time in times]  # suggested syntax
 
     # Convert UTC times to JDs
     JDs = [JD(args.date, utc) for utc in UTCs]
