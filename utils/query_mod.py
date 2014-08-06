@@ -14,7 +14,11 @@ def query(name):
     DEC = string of form: '[+/-]dd:mm:ss.ss'
     '''
     result_table = astroquery.simbad.Simbad.query_object(name)
-    ra, dec = result_table['RA'][0], result_table['DEC'][0]
+    ra, dec = result_table['RA'], result_table['DEC']
+    try:
+        ra, dec = ra[0], dec[0]  # Take first match from the table
+    except IndexError:
+        raise
     ra, dec = ':'.join(ra.split()), ':'.join(dec.split())
     return ra, dec
 
