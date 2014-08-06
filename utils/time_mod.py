@@ -1,5 +1,5 @@
 #! /usr/bin/env python
-
+import numpy as np
 ###############
 def clock_to_UTC(time,UTCoffset=-5):
     '''
@@ -9,7 +9,15 @@ def clock_to_UTC(time,UTCoffset=-5):
     OUTPUT
     UTC = decimal hours [float], can exceed 24
     '''
-    pass
+    #h, m, s = time.split(':')
+    h, m, s = [float(x) for x in time.split(':')]
+    #h = float(h)
+    #m = float(m)
+    # = float(s)
+    h = h - UTCoffset    
+    UTC = h + m/60 + s/3600
+
+    return UTC
 
 def JD(date, UTC):
     '''
@@ -20,5 +28,9 @@ def JD(date, UTC):
     OUTPUT
     JD = days since J2000.0, including fraction of a day [float]
     '''
-    pass
+    m, d, y = [float(x) for x in date.split('/')]
+    JD = 367*y - (7*(y+((m+9)/12)))/4 + (275*m)/9 + d + 1721013.5 + UTC/24 - .5*np.sign(100*y+m-190002.5) + .5
+    #JD = JD - 2400000.5
+    JD = JD - 2451545
+    return JD
 ##############
